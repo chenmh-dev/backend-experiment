@@ -1,0 +1,450 @@
+2026-03-04 05:35:12,476 INFO request_id=942f76a3b039 POST /login status=200 duration_ms=129 user_id=None
+2026-03-04 05:35:57,197 INFO request_id=1c01f23695f1 POST /login status=200 duration_ms=126 user_id=None
+2026-03-04 05:39:04,758 INFO request_id=c5d521c4e443 POST /login status=200 duration_mc=128 user_id=None
+2026-03-04 05:40:20,081 INFO request_id=a117e818a4fc GET /me status=200 duration_mc=1 user_id=2
+2026-03-04 05:40:48,933 INFO request_id=b03db7686df3 POST /login status=200 duration_mc=132 user_id=None
+2026-03-04 05:43:17,544 INFO request_id=48f26dda1ce8 POST /posts status=201 duration_mc=4 user_id=2
+2026-03-04 05:43:32,050 INFO request_id=becf51f732ab GET /posts/11 status=200 duration_mc=1 user_id=2
+2026-03-04 05:43:41,585 INFO request_id=d88e92eb798a GET /posts status=200 duration_mc=1 user_id=2
+2026-03-04 05:43:49,390 INFO request_id=bd0a48b44456 GET /posts status=200 duration_mc=1 user_id=2
+2026-03-04 05:43:55,744 INFO request_id=4566d0281eff GET /posts status=200 duration_mc=1 user_id=2
+2026-03-04 05:43:59,319 INFO request_id=5835684cbc6f PATCH /posts/11 status=200 duration_mc=4 user_id=2
+2026-03-04 05:44:03,054 INFO request_id=dcdd5b1d9f8d DELETE /posts/11 status=200 duration_mc=3 user_id=2
+2026-03-04 05:44:04,479 WARNING request_id=01e8cbd76716 AppError code=POST_NOT_FOUND status=404 message=Post not found
+2026-03-04 05:44:04,480 INFO request_id=01e8cbd76716 GET /posts/11 status=404 duration_mc=1 user_id=2
+2026-03-04 05:44:09,014 INFO request_id=2efae126be7b GET /debug/users status=200 duration_mc=1 user_id=None
+2026-03-04 05:45:20,867 INFO request_id=3bc9aa1fb31b GET /posts status=200 duration_mc=1 user_id=2
+2026-03-04 05:46:48,189 INFO request_id=c80fbb7e82f0 GET /posts status=200 duration_mc=1 user_id=2
+2026-03-04 05:46:59,815 WARNING request_id=b3db06ffd7cd AppError code=POST_NOT_FOUND status=404 message=Post not found
+2026-03-04 05:46:59,815 INFO request_id=b3db06ffd7cd GET /posts/11 status=404 duration_mc=1 user_id=2
+2026-03-04 05:47:54,222 ERROR request_id=d0d679820caf Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\decorators.py", line 22, in wrapper
+    return fn(*args, **kwargs)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\blueprints\posts_routes.py", line 53, in get_post_route
+    post = get_post(post_id=post_id, user_id=user_id)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\services\post_service.py", line 63, in get_post
+    row = db.execute(
+          ~~~~~~~~~~^
+        "SELECT id, title, content, created_at FROM psts WHERE id = ? AND user_id = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (post_id, user_id)
+        ^^^^^^^^^^^^^^^^^^
+    ).fetchone()
+    ^
+sqlite3.OperationalError: no such table: psts
+2026-03-04 05:47:54,228 INFO request_id=d0d679820caf GET /posts/11 status=500 duration_mc=7 user_id=2
+2026-03-04 05:48:11,089 INFO request_id=0106f8bc1f9f POST /login status=200 duration_mc=126 user_id=None
+2026-03-04 05:48:14,530 INFO request_id=e17b2055bd70 GET /me status=200 duration_mc=1 user_id=2
+2026-03-04 05:48:19,404 INFO request_id=fbb6c2b18068 POST /posts status=201 duration_mc=3 user_id=2
+2026-03-04 05:48:23,234 ERROR request_id=2abe26645cdc Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\decorators.py", line 22, in wrapper
+    return fn(*args, **kwargs)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\blueprints\posts_routes.py", line 53, in get_post_route
+    post = get_post(post_id=post_id, user_id=user_id)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\services\post_service.py", line 63, in get_post
+    row = db.execute(
+          ~~~~~~~~~~^
+        "SELECT id, title, content, created_at FROM psts WHERE id = ? AND user_id = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (post_id, user_id)
+        ^^^^^^^^^^^^^^^^^^
+    ).fetchone()
+    ^
+sqlite3.OperationalError: no such table: psts
+2026-03-04 05:48:23,239 INFO request_id=2abe26645cdc GET /posts/12 status=500 duration_mc=6 user_id=2
+2026-03-05 10:14:38,175 INFO request_id=6f82ecbc4d36 POST /login status=200 duration_mc=134 user_id=None
+2026-03-05 10:18:36,567 ERROR request_id=b3f53d19f075 Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-03-05 10:18:36,575 INFO request_id=b3f53d19f075 GET /post_id/comments status=500 duration_mc=7 user_id=None
+2026-03-05 10:19:08,120 ERROR request_id=29f17688624f Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-03-05 10:19:08,125 INFO request_id=29f17688624f GET /2/comments status=500 duration_mc=5 user_id=None
+2026-03-05 10:19:11,837 ERROR request_id=1c00c956f226 Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-03-05 10:19:11,843 INFO request_id=1c00c956f226 GET /2/comments status=500 duration_mc=5 user_id=None
+2026-03-05 10:20:39,275 ERROR request_id=316c1a12750d Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-03-05 10:20:39,280 INFO request_id=316c1a12750d DELETE /comments/id status=500 duration_mc=5 user_id=None
+2026-03-05 10:20:41,716 ERROR request_id=d1152f1130d3 Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-03-05 10:20:41,721 INFO request_id=d1152f1130d3 GET /2/comments status=500 duration_mc=4 user_id=None
+2026-03-05 10:21:19,386 ERROR request_id=8dca8b584efe Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\decorators.py", line 22, in wrapper
+    return fn(*args, **kwargs)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\blueprints\comments_routes.py", line 21, in list_comments_route
+    data = list_comment(post_id=post_id)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\services\comment_service.py", line 30, in list_comment
+    rows = db.execute(
+           ~~~~~~~~~~^
+        "SELECT id, user_id, content FROM comments WHRERE post_id = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (post_id,)
+        ^^^^^^^^^^
+    ).fetchall()
+    ^
+sqlite3.OperationalError: near "post_id": syntax error
+2026-03-05 10:21:19,391 INFO request_id=8dca8b584efe GET /posts/2/comments status=500 duration_mc=6 user_id=2
+2026-03-05 10:22:22,598 ERROR request_id=da48136b1718 Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\decorators.py", line 22, in wrapper
+    return fn(*args, **kwargs)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\blueprints\comments_routes.py", line 21, in list_comments_route
+    data = list_comment(post_id=post_id)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\services\comment_service.py", line 30, in list_comment
+    rows = db.execute(
+           ~~~~~~~~~~^
+        "SELECT id, user_id, content FROM comments WHRERE post_id = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (post_id,)
+        ^^^^^^^^^^
+    ).fetchall()
+    ^
+sqlite3.OperationalError: near "post_id": syntax error
+2026-03-05 10:22:22,604 INFO request_id=da48136b1718 GET /posts/2/comments status=500 duration_mc=6 user_id=2
+2026-03-05 10:22:33,518 INFO request_id=020f12574fad POST /posts status=201 duration_mc=4 user_id=2
+2026-03-05 10:22:44,570 INFO request_id=1ed11c42dbaa GET /posts/13 status=200 duration_mc=0 user_id=2
+2026-03-05 10:22:47,956 INFO request_id=cbb2e997ea0a GET /posts status=200 duration_mc=1 user_id=2
+2026-03-05 10:22:52,275 INFO request_id=c5df1860ec11 GET /posts status=200 duration_mc=1 user_id=2
+2026-03-05 10:22:54,131 INFO request_id=692ca1090655 GET /posts status=200 duration_mc=1 user_id=2
+2026-03-05 10:22:56,149 INFO request_id=eb9c6f528b7a PATCH /posts/13 status=200 duration_mc=4 user_id=2
+2026-03-05 10:23:00,764 INFO request_id=f9a705243015 DELETE /posts/13 status=200 duration_mc=3 user_id=2
+2026-03-05 10:23:03,567 WARNING request_id=419a517e46bb AppError code=POST_NOT_FOUND status=404 message=Post not found
+2026-03-05 10:23:03,567 INFO request_id=419a517e46bb GET /posts/13 status=404 duration_mc=1 user_id=2
+2026-03-05 10:23:07,095 ERROR request_id=798bd8132741 Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-03-05 10:23:07,101 INFO request_id=798bd8132741 POST /posts/post_id/comments status=500 duration_mc=5 user_id=None
+2026-03-05 10:25:54,148 ERROR request_id=6880ea5fb872 Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\decorators.py", line 22, in wrapper
+    return fn(*args, **kwargs)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\blueprints\comments_routes.py", line 14, in post_comment_route
+    data = create_comment(post_id=post_id, content=content)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\services\comment_service.py", line 17, in create_comment
+    cur = db.execute(
+        "INSERT INTO comments (user_id, post_id, content) VALUES(?, ?, ?)",
+        (user_id, post_id, content)
+    )
+sqlite3.OperationalError: no such table: comments
+2026-03-05 10:25:54,152 INFO request_id=6880ea5fb872 POST /posts/2/comments status=500 duration_mc=5 user_id=2
+2026-03-05 10:26:05,458 ERROR request_id=1b81dc808d7f Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\decorators.py", line 22, in wrapper
+    return fn(*args, **kwargs)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\blueprints\comments_routes.py", line 21, in list_comments_route
+    data = list_comment(post_id=post_id)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\services\comment_service.py", line 30, in list_comment
+    rows = db.execute(
+           ~~~~~~~~~~^
+        "SELECT id, user_id, content FROM comments WHRERE post_id = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (post_id,)
+        ^^^^^^^^^^
+    ).fetchall()
+    ^
+sqlite3.OperationalError: near "post_id": syntax error
+2026-03-05 10:26:05,463 INFO request_id=1b81dc808d7f GET /posts/2/comments status=500 duration_mc=5 user_id=2
+2026-03-05 10:28:31,038 WARNING request_id=0cd5148471f8 AppError code=POST_NOT_FOUND status=404 message=Post has been delete
+2026-03-05 10:28:31,039 INFO request_id=0cd5148471f8 POST /posts/2/comments status=404 duration_mc=1 user_id=2
+2026-03-05 10:28:45,000 WARNING request_id=605135d390c4 AppError code=POST_NOT_FOUND status=404 message=Post has been delete
+2026-03-05 10:28:45,000 INFO request_id=605135d390c4 POST /posts/2/comments status=404 duration_mc=1 user_id=2
+2026-03-05 10:33:53,904 ERROR request_id=9b83fc6e83a9 Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\decorators.py", line 22, in wrapper
+    return fn(*args, **kwargs)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\blueprints\comments_routes.py", line 14, in post_comment_route
+    data = create_comment(post_id=post_id, content=content)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\services\comment_service.py", line 7, in create_comment
+    user_id = int(g.get("user_id"))
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2026-03-05 10:33:53,910 INFO request_id=9b83fc6e83a9 POST /posts/2/comments status=500 duration_mc=6 user_id=2
+2026-03-05 10:35:40,195 INFO request_id=2912e5969cef GET /posts status=200 duration_mc=1 user_id=2
+2026-03-05 10:36:13,311 WARNING request_id=f275c0d97d12 AppError code=POST_NOT_FOUND status=404 message=Post has been delete
+2026-03-05 10:36:13,312 INFO request_id=f275c0d97d12 POST /posts/7/comments status=404 duration_mc=1 user_id=2
+2026-03-05 10:37:15,882 WARNING request_id=b9ae5ef697dd AppError code=POST_NOT_FOUND status=404 message=Post has been delete
+2026-03-05 10:37:15,883 INFO request_id=b9ae5ef697dd POST /posts/7/comments status=404 duration_mc=1 user_id=2
+2026-03-05 10:38:52,871 INFO request_id=18a8722706da GET /posts status=200 duration_mc=1 user_id=2
+2026-03-05 10:53:10,768 WARNING request_id=5b8def5dbde8 AppError code=POST_NOT_FOUND status=404 message=Post not found
+2026-03-05 10:53:10,768 INFO request_id=5b8def5dbde8 POST /posts/79/comments status=404 duration_mc=1 user_id=2
+2026-03-05 10:53:18,723 WARNING request_id=cf9926d226bc AppError code=POST_NOT_FOUND status=404 message=Post has been deleted
+2026-03-05 10:53:18,724 INFO request_id=cf9926d226bc POST /posts/7/comments status=404 duration_mc=1 user_id=2
+2026-03-05 10:56:08,009 WARNING request_id=3bf283327502 AppError code=POST_NOT_FOUND status=404 message=Post has been deleted
+2026-03-05 10:56:08,009 INFO request_id=3bf283327502 POST /posts/7/comments status=404 duration_mc=1 user_id=2
+2026-03-05 10:58:22,253 WARNING request_id=baa40c8e6c1e AppError code=POST_NOT_FOUND status=404 message=Post has been deleted
+2026-03-05 10:58:22,253 INFO request_id=baa40c8e6c1e POST /posts/7/comments status=404 duration_mc=1 user_id=2
+2026-03-05 11:04:40,164 INFO request_id=e0bdae47da3c POST /posts/7/comments status=201 duration_mc=3 user_id=2
+2026-03-05 11:05:04,771 ERROR request_id=7cf42ced6b59 Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\decorators.py", line 22, in wrapper
+    return fn(*args, **kwargs)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\blueprints\comments_routes.py", line 21, in list_comments_route
+    data = list_comment(post_id=post_id)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\services\comment_service.py", line 31, in list_comment
+    rows = db.execute(
+           ~~~~~~~~~~^
+        "SELECT id, user_id, content FROM comments WHRERE post_id = ?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (post_id,)
+        ^^^^^^^^^^
+    ).fetchall()
+    ^
+sqlite3.OperationalError: near "post_id": syntax error
+2026-03-05 11:05:04,777 INFO request_id=7cf42ced6b59 GET /posts/7/comments status=500 duration_mc=6 user_id=2
+2026-03-05 11:08:29,655 ERROR request_id=9167d3ea9003 Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\decorators.py", line 22, in wrapper
+    return fn(*args, **kwargs)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\blueprints\comments_routes.py", line 21, in list_comments_route
+    data = list_comment(post_id=post_id)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\services\comment_service.py", line 36, in list_comment
+    return dict(rows) if rows else {}
+           ~~~~^^^^^^
+ValueError: dictionary update sequence element #0 has length 3; 2 is required
+2026-03-05 11:08:29,661 INFO request_id=9167d3ea9003 GET /posts/7/comments status=500 duration_mc=7 user_id=2
+2026-03-05 11:08:41,989 ERROR request_id=a9f934589c55 Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\decorators.py", line 22, in wrapper
+    return fn(*args, **kwargs)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\blueprints\comments_routes.py", line 21, in list_comments_route
+    data = list_comment(post_id=post_id)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\services\comment_service.py", line 36, in list_comment
+    return dict(rows) if rows else {}
+           ~~~~^^^^^^
+ValueError: dictionary update sequence element #0 has length 3; 2 is required
+2026-03-05 11:08:41,994 INFO request_id=a9f934589c55 GET /posts/7/comments status=500 duration_mc=6 user_id=2
+2026-03-05 11:08:50,955 INFO request_id=dc24d69c2424 POST /posts/7/comments status=201 duration_mc=4 user_id=2
+2026-03-05 11:08:56,158 ERROR request_id=2e18328eb481 Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\decorators.py", line 22, in wrapper
+    return fn(*args, **kwargs)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\blueprints\comments_routes.py", line 21, in list_comments_route
+    data = list_comment(post_id=post_id)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\services\comment_service.py", line 36, in list_comment
+    return dict(rows) if rows else {}
+           ~~~~^^^^^^
+ValueError: dictionary update sequence element #0 has length 3; 2 is required
+2026-03-05 11:08:56,162 INFO request_id=2e18328eb481 GET /posts/7/comments status=500 duration_mc=5 user_id=2
+2026-03-05 11:18:37,860 INFO request_id=4cc0e96f7545 GET /posts/7/comments status=401 duration_mc=0 user_id=None
+2026-03-05 11:18:48,652 INFO request_id=7935415a6baa POST /login status=200 duration_mc=136 user_id=None
+2026-03-05 11:18:53,717 INFO request_id=8b19a8b481ff GET /posts/7/comments status=200 duration_mc=1 user_id=2
+2026-03-05 11:20:25,536 INFO request_id=d93a85731bae GET /posts/7/comments status=200 duration_mc=1 user_id=2
+2026-03-05 11:20:35,469 INFO request_id=3ec3e033c195 DELETE /comments/2 status=401 duration_mc=0 user_id=None
+2026-03-05 11:20:51,660 WARNING request_id=5e5c6cc08bc3 AppError code=COMMENT_NOT_FOUND status=404 message=Comment not found
+2026-03-05 11:20:51,661 INFO request_id=5e5c6cc08bc3 DELETE /comments/2 status=404 duration_mc=1 user_id=2
+2026-03-05 11:20:56,932 INFO request_id=3f8996d4ce0c GET /posts/7/comments status=200 duration_mc=1 user_id=2
+2026-03-05 11:21:11,419 WARNING request_id=49522915be15 AppError code=COMMENT_NOT_FOUND status=404 message=Comment not found
+2026-03-05 11:21:11,420 INFO request_id=49522915be15 DELETE /comments/2 status=404 duration_mc=1 user_id=2
+2026-03-05 11:22:26,712 INFO request_id=2eb05e42c9c6 DELETE /comments/2 status=200 duration_mc=1 user_id=2
+2026-03-05 11:22:28,983 INFO request_id=5aca9cb10345 GET /posts/7/comments status=200 duration_mc=1 user_id=2
+2026-03-05 11:22:46,173 INFO request_id=cee7699b777d DELETE /comments/2 status=200 duration_mc=1 user_id=2
+2026-03-05 11:22:51,426 INFO request_id=66396f60ac51 GET /posts/7/comments status=200 duration_mc=0 user_id=2
+2026-03-05 11:22:56,133 INFO request_id=2c6a0e99e68e DELETE /comments/2 status=200 duration_mc=1 user_id=2
+2026-03-05 11:23:01,197 INFO request_id=446e3754d36c GET /posts/7/comments status=200 duration_mc=0 user_id=2
+2026-03-05 11:23:08,294 INFO request_id=3c9596a8d4ff DELETE /comments/2 status=200 duration_mc=1 user_id=2
+2026-03-05 11:23:08,961 INFO request_id=6bc552c7195d DELETE /comments/2 status=200 duration_mc=1 user_id=2
+2026-03-05 11:23:09,818 INFO request_id=c8bf411a0b1c DELETE /comments/2 status=200 duration_mc=1 user_id=2
+2026-03-05 11:25:16,117 INFO request_id=7ae748505810 DELETE /comments/2 status=200 duration_mc=3 user_id=2
+2026-03-05 11:25:17,752 INFO request_id=88c291695144 GET /posts/7/comments status=200 duration_mc=1 user_id=2
+2026-03-07 07:01:32,876 INFO request_id=2965b3e3004b POST /login status=200 duration_mc=129 user_id=None
+2026-03-07 07:01:41,811 ERROR request_id=12a559286278 Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\decorators.py", line 22, in wrapper
+    return fn(*args, **kwargs)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\blueprints\comments_routes.py", line 25, in list_comments_route
+    data = list_comments(post_id=post_id)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\services\comment_service.py", line 27, in list_comments
+    _ensure_post_exists()
+    ~~~~~~~~~~~~~~~~~~~^^
+TypeError: _ensure_post_exists() missing 1 required positional argument: 'post_id'
+2026-03-07 07:01:41,817 INFO request_id=12a559286278 GET /posts/7/comments status=500 duration_mc=6 user_id=2
+2026-03-07 07:01:50,032 INFO request_id=b0d3a8d6f5e9 GET /posts status=200 duration_mc=1 user_id=2
+2026-03-07 07:02:02,611 INFO request_id=363ec386fd40 GET /posts status=200 duration_mc=1 user_id=2
+2026-03-07 07:02:05,118 ERROR request_id=5435027b9e76 Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2026-03-07 07:02:05,126 INFO request_id=5435027b9e76 GET /posts/{{createPost.response.body.data.id}} status=500 duration_mc=7 user_id=None
+2026-03-07 07:02:14,440 INFO request_id=0604824bab02 POST /posts status=201 duration_mc=3 user_id=2
+2026-03-07 07:02:18,781 INFO request_id=0a5634d57758 GET /posts/14 status=200 duration_mc=0 user_id=2
+2026-03-07 07:02:22,448 INFO request_id=bafc16ba981a GET /posts status=200 duration_mc=1 user_id=2
+2026-03-07 07:02:25,650 INFO request_id=f4392c4181e0 GET /posts status=200 duration_mc=1 user_id=2
+2026-03-07 07:02:28,290 INFO request_id=89aa4aec10f4 PATCH /posts/14 status=200 duration_mc=4 user_id=2
+2026-03-07 07:02:30,377 INFO request_id=ea52fa97f2e5 DELETE /posts/14 status=200 duration_mc=3 user_id=2
+2026-03-07 07:02:32,356 WARNING request_id=09582f24d018 AppError code=POST_NOT_FOUND status=404 message=Post not found
+2026-03-07 07:02:32,356 INFO request_id=09582f24d018 GET /posts/14 status=404 duration_mc=1 user_id=2
+2026-03-07 07:02:35,969 ERROR request_id=a7adae1f0adb Unhandled exception
+Traceback (most recent call last):
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\decorators.py", line 22, in wrapper
+    return fn(*args, **kwargs)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\blueprints\comments_routes.py", line 16, in post_comment_route
+    data = create_comment(user_id=user_id, post_id=post_id, content=content)
+  File "E:\WorkSpace\VSCode\PYTHON\backend_experiment\app\services\comment_service.py", line 13, in create_comment
+    _ensure_post_exists()
+    ~~~~~~~~~~~~~~~~~~~^^
+TypeError: _ensure_post_exists() missing 1 required positional argument: 'post_id'
+2026-03-07 07:02:35,973 INFO request_id=a7adae1f0adb POST /posts/7/comments status=500 duration_mc=4 user_id=2
+2026-03-07 07:03:45,676 INFO request_id=9efdde549538 GET /posts/7/comments status=200 duration_mc=1 user_id=2
+2026-03-07 07:04:01,002 INFO request_id=250743313a42 POST /posts/7/comments status=201 duration_mc=3 user_id=2
+2026-03-07 07:04:05,561 INFO request_id=aab234d4df28 GET /posts/7/comments status=200 duration_mc=0 user_id=2
+2026-03-07 07:04:16,134 INFO request_id=d2ac770d3dd3 DELETE /comments/3 status=200 duration_mc=3 user_id=2
+2026-03-07 07:04:18,392 INFO request_id=ea9c663beb7e GET /posts/7/comments status=200 duration_mc=1 user_id=2
+2026-03-07 07:04:20,403 INFO request_id=8874aadf7ca2 POST /posts/7/comments status=201 duration_mc=3 user_id=2
+2026-03-07 07:04:23,526 INFO request_id=33480da010be GET /posts/7/comments status=200 duration_mc=1 user_id=2
+2026-03-07 07:04:31,982 INFO request_id=3847a904133b DELETE /comments/4 status=200 duration_mc=3 user_id=2
+2026-03-07 12:01:27,433 INFO request_id=333ac9b63369 POST /login status=200 duration_mc=132 user_id=None

@@ -1,0 +1,87 @@
+@baseUrl = http://127.0.0.1:5000
+@username = hui
+@password = 1234
+
+### Login
+# @name login
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "username": "{{username}}",
+  "password": "{{password}}"
+}
+### 设置 token 变量（从上一个响应里取）
+@token = {{login.response.body.data.token}}
+
+### Me
+GET {{baseUrl}}/me
+Authorization: Bearer {{token}}
+
+### Create Post
+# @name createPost
+POST {{baseUrl}}/posts
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "test {{$timestamp}}",
+  "content": "content {{$timestamp}}"
+}
+
+###
+@createdPostId = {{createPost.response.body.data.id}}
+
+### Get Post post_id
+GET {{baseUrl}}/posts/{{createdPostId}}
+Authorization: Bearer {{token}}
+
+### Get Post keyword
+GET {{baseUrl}}/posts?keyword=hello
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/posts?sort=created_at&order=asc
+Authorization: Bearer {{token}}
+
+### List Posts
+GET {{baseUrl}}/posts?page=1&page_size=3
+Authorization: Bearer {{token}}
+
+### Patch Post
+PATCH {{baseUrl}}/posts/{{createdPostId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "updated {{$timestamp}}",
+  "content": "updated content"
+}
+
+### Delete Post
+DELETE {{baseUrl}}/posts/{{createdPostId}}
+Authorization: Bearer {{token}}
+
+### Get Deleted (should 404)
+GET {{baseUrl}}/posts/{{createdPostId}}
+Authorization: Bearer {{token}}
+
+### Create Comment
+POST {{baseUrl}}/posts/7/comments
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "content": "plunddddn"
+}
+
+### List Comment
+GET {{baseUrl}}/posts/7/comments
+Authorization: Bearer {{token}}
+
+### Delete Comment
+DELETE {{baseUrl}}/comments/4
+Authorization: Bearer {{token}}
+
+### Debug Users (dev only)
+GET {{baseUrl}}/posts/debug/users
